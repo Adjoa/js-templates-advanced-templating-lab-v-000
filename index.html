@@ -11,23 +11,30 @@
 
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="index.js"></script>
-
+    
+    <!-- Recipe Template -->
     <script id="recipe-template" type="text/x-handlebars-template">
       {{name}}
       <a href="displayEditForm()">Edit Recipe</a>
       {{> recipeDetailsPartial}}
     </script>
+
+    <!--  Recipe Details Partial-->
     <script id="recipe-details-partial" type="text/x-handlebars-template">
       {{description}}
       {{#each ingredients}}
         {{displayIngredient this}}
       {{/each}}
     </script>
+
+    <!--  Recipe Form Template-->
     <script id="recipe-form-template" type="text/x-handlebars-template">
       <form id="recipe-form" onsubmit="{{submitAction}}; return false;">
         {{> recipeFormPartial}}
       </form>
     </script>
+
+    <!--  Recipe Form Partial -->
     <script id="recipe-form-partial" type="text/x-handlebars-template">
         Recipe Name:<input type="text" id="name" value="{{name}}">
         {{#each ingredients}}
