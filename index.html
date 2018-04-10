@@ -7,48 +7,33 @@
     <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
-    <main id="main"></main>
+    <main id="main">
+      <form id="recipe-form" onsubmit="createRecipe(); return false;">
+        Recipe Name:<input type="text" id="name">
+        <input type="text" name="ingredients">
+        <input type="text" name="ingredients">
+        <input type="text" name="ingredients">
+        <input type="text" name="ingredients">
+        <input type="text" name="ingredients">
+        <input type="submit">
+      </form>
+    </main>
+    <script id="recipe-form-template" type="text/x-handlebars-template">
 
-    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script src="index.js"></script>
-
-    <!-- Recipe Template -->
+    </script>
     <script id="recipe-template" type="text/x-handlebars-template">
       {{name}}
       <a href="displayEditForm()">Edit Recipe</a>
       {{> recipeDetailsPartial}}
     </script>
-
-    <!--  Recipe Details Partial-->
     <script id="recipe-details-partial" type="text/x-handlebars-template">
       {{description}}
       {{#each ingredients}}
         {{displayIngredient this}}
       {{/each}}
     </script>
-
-    <!--  Recipe Form Template-->
-    <script id="recipe-form-template" type="text/x-handlebars-template">
-      <form id="recipe-form" onsubmit="{{submitAction}}; return false;">
-        {{> recipeFormPartial}}
-      </form>
-    </script>
-
-    <!--  Recipe Form Partial -->
-    <script id="recipe-form-partial" type="text/x-handlebars-template">
-        Recipe Name:<input type="text" id="name" value="{{name}}">
-        {{#each ingredients}}
-        <input name="ingredients" type="text" value="{{this}}"><br>
-        {{else}}
-        <input type="text" name="ingredients">
-        <input type="text" name="ingredients">
-        <input type="text" name="ingredients">
-        <input type="text" name="ingredients">
-        <input type="text" name="ingredients">
-        {{/each}}
-        <input type="submit">
-    </script>
-
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="index.js"></script>
     <!-- Open this file and call `mocha.run()` in console to run tests -->
     <div id="mocha"></div>
     <script src="node_modules/mocha/mocha.js"></script>
